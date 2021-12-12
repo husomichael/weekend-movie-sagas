@@ -21,7 +21,7 @@ Additional README details can be found [here](https://github.com/PrimeAcademy/re
     [x]input field (title)
     [x]input field (movie poster image url)
     [x]textarea (movie description)
-    []dropdown (genres)
-    []Buttons
+    [x]dropdown (genres)
+    [x]Buttons
         [x]'Cancel' which should bring the user to the home / list page.
-        []'Save' which should save these inputs in the database and bring the user to the home/list page (which now has the new movie).
+        [x]'Save' which should save these inputs in the database and bring the user to the home/list page (which now has the new movie).

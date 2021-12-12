@@ -32,6 +32,7 @@ function AddMovie(){
             type: 'ADD_MOVIE',
             payload: movieToAdd
         });
+        history.push('/');
     };
 
     function handleSetTitle(event){
