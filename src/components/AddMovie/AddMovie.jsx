@@ -1,12 +1,25 @@
 import {useDispatch, useSelector} from 'react-redux';
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import {useHistory} from 'react-router-dom';
 
 function AddMovie(){
 
     const [movieToAdd, setMovieToAdd] = useState({title: '', description: '', poster: '', genre: ''});
+    const genres = useSelector(store => store.genres);
     const dispatch = useDispatch();
     const history = useHistory();
+
+    useEffect(() =>{
+        getGenres();
+    }, []);
+
+    function getGenres(){
+        dispatch({
+            type: 'FETCH_GENRES'
+        });
+    };
+
+
 
     function handleAddMovie(event){
         console.log(movieToAdd);
