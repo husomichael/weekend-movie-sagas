@@ -23,11 +23,10 @@ function App() {
         <Route exact path="/details">
           <Details />
         </Route>
-        {/* <Route exact path="/addmovie"> */}
+        <Route exact path="/addmovie">
           <AddMovie />
-        {/* </Route> */}
-      </Router>
-      <button onClick={goToAddMovie}>Add a Movie</button>
+        </Route>
+      </Router>]
     </div>
   );
 };

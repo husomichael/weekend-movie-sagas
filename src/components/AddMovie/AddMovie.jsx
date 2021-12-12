@@ -19,7 +19,7 @@ function AddMovie(){
         });
     };
 
-
+    console.log('Genres:', genres);
 
     function handleAddMovie(event){
         console.log(movieToAdd);
@@ -47,21 +47,26 @@ function AddMovie(){
 
     function cancelAddMovie(){
         history.push('/');
-        setMovieToAdd({});
+        setMovieToAdd({title: '', description: '', poster: '', genre: ''});
     };
 
     return(
         <div>
             <form onSubmit={handleAddMovie}>
-                <input value={movieToAdd.title} onChange={handleSetTitle} />
-                <input value={movieToAdd.poster} onChange={handleSetPoster} />
-                <textarea value={movieToAdd.description} onChange={handleSetDescription} />
-                <select>
-                    {/* Map through genreState here */}
+                <input placeholder="Title" value={movieToAdd.title} onChange={handleSetTitle} />
+                <input placeholder="Poster URL" value={movieToAdd.poster} onChange={handleSetPoster} />
+                <textarea placeholder="Description" value={movieToAdd.description} onChange={handleSetDescription} />
+                <select value={movieToAdd.genre} onChange={handleSetGenre}>
+                    <option disabled value='0'>
+                        Select a Genre!
+                    </option>
+                    {genres.map(genre => {
+                        return <option key={genre.id} value={genre.id}>{genre.name}</option>
+                    })}
                 </select>
-                <button onClick={cancelAddMovie}>Cancel</button>
                 <button>Save</button>
             </form>
+            <button onClick={cancelAddMovie}>Cancel</button>
         </div>
     );
 };
