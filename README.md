@@ -18,10 +18,10 @@ Additional README details can be found [here](https://github.com/PrimeAcademy/re
         []Store this data in redux
     []"Back to list" button that takes user to home/list page.
 []Add Movie page
-    []input field (title)
-    []input field (movie poster image url)
-    []textarea (movie description)
+    [x]input field (title)
+    [x]input field (movie poster image url)
+    [x]textarea (movie description)
     []dropdown (genres)
     []Buttons
-        []'Cancel' which should bring the user to the home / list page.
+        [x]'Cancel' which should bring the user to the home / list page.
         []'Save' which should save these inputs in the database and bring the user to the home/list page (which now has the new movie).
