@@ -4,38 +4,38 @@ import {useHistory} from 'react-router-dom';
 
 function AddMovie(){
 
-    const [movieToAdd, setMovieToAdd] = useState({});
+    const [movieToAdd, setMovieToAdd] = useState({title: '', description: '', poster: '', genre: ''});
     const dispatch = useDispatch();
     const history = useHistory();
 
     function handleAddMovie(event){
-        
+        console.log(movieToAdd);
+        dispatch({
+            type: 'ADD_MOVIE',
+            payload: movieToAdd
+        });
     };
 
     function handleSetTitle(event){
-
+        setMovieToAdd({title: event.target.value});
     };
 
     function handleSetPoster(event){
-
+        setMovieToAdd({poster: event.target.value});
     };
 
     function handleSetDescription(event){
-
-    }
+        setMovieToAdd({description: event.target.value});
+    };
 
     function handleSetGenre(event){
-
-    }
+        setMovieToAdd({genre: event.target.value});
+    };
 
     function cancelAddMovie(){
         history.push('/');
         setMovieToAdd({});
     };
-    
-    function saveMovie(){
-        
-    }
 
     return(
         <div>
@@ -47,7 +47,7 @@ function AddMovie(){
                     {/* Map through genreState here */}
                 </select>
                 <button onClick={cancelAddMovie}>Cancel</button>
-                <button onClick={saveMovie}>Save</button>
+                <button>Save</button>
             </form>
         </div>
     );
