@@ -63,9 +63,16 @@ function AddMovie(){
     return(
         <div>
             <form onSubmit={handleAddMovie}>
+                <div>
                 <input placeholder="Title" value={title} onChange={handleSetTitle} />
+                </div>
+                <div>
                 <input placeholder="Poster URL" value={poster} onChange={handleSetPoster} />
+                </div>
+                <div>
                 <textarea placeholder="Description" value={description} onChange={handleSetDescription} />
+                </div>
+                <div>
                 <select onChange={handleSetGenre}>
                     <option disabled value='0'>
                         Select a Genre!
@@ -75,6 +82,7 @@ function AddMovie(){
                     })}
                 </select>
                 <button>Save</button>
+                </div>
             </form>
             <button onClick={cancelAddMovie}>Cancel</button>
         </div>

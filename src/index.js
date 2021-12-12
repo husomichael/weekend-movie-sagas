@@ -63,6 +63,19 @@ function* addMovie(action){
     };
 };
 
+function* fetchDetails(action){
+    console.log('fetchDetails payload:', action.payload)
+    const movieID = action.payload;
+    try{
+        const response = yield axios({
+            method: 'GET',
+            url: `/api/movie/${movieID}`
+        })
+    }catch(err){
+        console.log('fetchDetails error:', err);
+    };
+}
+
 
 
 // Create sagaMiddleware

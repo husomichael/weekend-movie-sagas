@@ -16,6 +16,13 @@ router.get('/', (req, res) => {
 
 });
 
+//Get single movie details
+router.get('/:id', (req, res) => {
+  const queryText = `
+    SELECT * FROM 
+  `
+})
+
 router.post('/', (req, res) => {
   console.log(req.body);
   // RETURNING "id" will give us back the id of the created movie
