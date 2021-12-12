@@ -33,7 +33,6 @@ function MovieList() {
             </section>
             <button onClick={goToAddMovie}>Add a Movie</button>
         </main>
-
     );
 }
 
