@@ -15,7 +15,12 @@ function MovieList() {
 
     function goToDetails(event){
         console.log('goToDetails event.target.id:', event.target.id)
+        const movieId = event.target.id;
         history.push('/details');
+        dispatch({
+            type: 'FETCH_DETAILS',
+            payload: movieId
+        });
     };
 
     useEffect(() => {
