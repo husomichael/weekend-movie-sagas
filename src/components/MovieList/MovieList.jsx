@@ -9,8 +9,13 @@ function MovieList() {
     const movies = useSelector(store => store.movies);
     const history = useHistory();
 
+    function goToAddMovie(){
+        history.push('/addmovie')
+    };
+
     useEffect(() => {
         dispatch({ type: 'FETCH_MOVIES' });
+        dispatch({ type: 'FETCH_GENRES' });
     }, []);
 
     return (
@@ -26,6 +31,7 @@ function MovieList() {
                     );
                 })}
             </section>
+            <button onClick={goToAddMovie}>Add a Movie</button>
         </main>
 
     );

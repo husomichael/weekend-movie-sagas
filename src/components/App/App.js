@@ -7,12 +7,6 @@ import AddMovie from '../AddMovie/AddMovie.jsx';
 
 function App() {
 
-  const history = useHistory();
-
-  function goToAddMovie(){
-    history.push('/addmovie');
-  };
-
   return (
     <div className="App">
       <h1>The Movies Saga!</h1>
@@ -26,7 +20,7 @@ function App() {
         <Route exact path="/addmovie">
           <AddMovie />
         </Route>
-      </Router>]
+      </Router>
     </div>
   );
 };

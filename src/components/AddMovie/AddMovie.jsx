@@ -9,16 +9,6 @@ function AddMovie(){
     const dispatch = useDispatch();
     const history = useHistory();
 
-    useEffect(() =>{
-        getGenres();
-    }, []);
-
-    function getGenres(){
-        dispatch({
-            type: 'FETCH_GENRES'
-        });
-    };
-
     console.log('Genres:', genres);
 
     function handleAddMovie(event){
