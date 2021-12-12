@@ -18,10 +18,31 @@ router.get('/', (req, res) => {
 
 //Get single movie details
 router.get('/:id', (req, res) => {
+  const movieID = req.body.params;
   const queryText = `
-    SELECT * FROM 
+    SELECT "description"
+    FROM "movies"
+    WHERE "id"=${movieID}
   `
-})
+  pool.query(queryText)
+    .then( dbRes =>{
+      const response = []
+      response.push(dbRes.rows);
+      const getGenresQuery = `
+      SELECT "name" FROM "movies_genres"
+      JOIN "genres"
+      ON "genres"."id"="movies_genres"."genre_id"
+      WHERE "movies_genres"."movie_id"=${movieID};
+      `
+    }).then(dbRes2 =>{
+      response.push(dbRes2.rows);
+      res.send(response);
+    })
+    .catch(dbErr => {
+      console.log('description get dbErr:', dbErr);
+      res.sendStatus(500);
+    });
+});
 
 router.post('/', (req, res) => {
   console.log(req.body);
