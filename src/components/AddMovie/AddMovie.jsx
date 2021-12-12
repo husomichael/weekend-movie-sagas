@@ -25,7 +25,7 @@ function AddMovie(){
             title: title,
             poster: poster,
             description: description,
-            genre: genre
+            genre_id: genre
         };
         console.log('movieToAdd:', movieToAdd);
         dispatch({
@@ -47,6 +47,7 @@ function AddMovie(){
     };
 
     function handleSetGenre(event){
+        console.log(event.target)
         setGenre(event.target.value);
     };
 
@@ -64,7 +65,7 @@ function AddMovie(){
                 <input placeholder="Title" value={title} onChange={handleSetTitle} />
                 <input placeholder="Poster URL" value={poster} onChange={handleSetPoster} />
                 <textarea placeholder="Description" value={description} onChange={handleSetDescription} />
-                <select value={genre} onChange={handleSetGenre}>
+                <select onChange={handleSetGenre}>
                     <option disabled value='0'>
                         Select a Genre!
                     </option>

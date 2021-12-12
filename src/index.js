@@ -48,11 +48,11 @@ function* fetchGenres(){
 };
 
 function* addMovie(action){
+    console.log('addMovie payload:', action.payload)
     try{
-        console.log('addMovie payload:', action.payload);
         const response = yield axios({
             method: 'POST',
-            url: '',
+            url: '/api/movie',
             data: action.payload
         })
         yield put({
