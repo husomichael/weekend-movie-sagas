@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool')
 
-let movieResponse = [];
+// let movieResponse = [];
 
 router.get('/', (req, res) => {
 

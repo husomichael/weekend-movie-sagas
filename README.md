@@ -1,27 +1,23 @@
-# Project Name
-
-[Project Instructions](./INSTRUCTIONS.md), this line may be removed once you have updated the README.md
+# Redux Sagas Movie List
 
 ## Description
 
-Your project description goes here. What problem did you solve? How did you solve it?
+Duration: 3 days.
 
-Additional README details can be found [here](https://github.com/PrimeAcademy/readme-template/blob/master/README.md).
+An application that stores movie descriptions, titles, poster urls, and genres to a database.
 
+On the main page the entire list of movies stored in the database are appended onto the DOM. Each movie can be clicked on to be taken to a details page of that movie, showing the title, description, and genres of the movie. There's also an add movie page that allows the user to add more movies to the database.
 
+All axios routes are handled with redux sagas, and on return from the server dispatch to the redux reducers. 
 
+## Built With
 
-[] Movie image on click, user should be brought to the /details view for that movie.
-[] Setup link to "Add Movie" page.
-[] Details page
-    []Show all details including all genres for the selected movie.
-        []Store this data in redux
-    []"Back to list" button that takes user to home/list page.
-[]Add Movie page
-    [x]input field (title)
-    [x]input field (movie poster image url)
-    [x]textarea (movie description)
-    [x]dropdown (genres)
-    [x]Buttons
-        [x]'Cancel' which should bring the user to the home / list page.
-        [x]'Save' which should save these inputs in the database and bring the user to the home/list page (which now has the new movie).
+React.js, React-Redux, Redux-Saga, Axios, Node.js, PostgreSQL
+
+## Acknowledgement
+
+Thanks to Prime Digital Academy who equipped and helped me make this application a reality.
+
+## Support
+
+If you have any suggestions, questions, or issues, please email me at husomichael@gmail.com

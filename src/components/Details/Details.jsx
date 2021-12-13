@@ -5,7 +5,7 @@ import {useState} from 'react';
 function Details(){
 
     const details = useSelector(store => store.details);
-    
+    const history = useHistory();
     const title = [];
     const description = [];
 
@@ -21,6 +21,10 @@ function Details(){
         );
     });
 
+    function goToList(){
+        history.push('/');
+    };
+
     return(
         <div>
             <div>{title[0]}</div>
@@ -33,6 +37,8 @@ function Details(){
                     {detail.name}
                     </div>
             })}
+            <br />
+            <button onClick={goToList}>Return to Movie List</button>
         </div>
     );
 };
