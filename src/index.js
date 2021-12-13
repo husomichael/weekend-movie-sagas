@@ -67,15 +67,20 @@ function* addMovie(action){
 function* fetchDetails(action){
     console.log('fetchDetails payload:', action.payload)
     const movieID = action.payload;
+    console.log('movieID in fetchDetails is:', movieID);
     try{
         const response = yield axios({
             method: 'GET',
             url: `/api/movie/${movieID}`
         })
+        yield put({
+            type: 'SET_DETAILS',
+            payload: response.data
+        })
     }catch(err){
         console.log('fetchDetails error:', err);
     };
-}
+};
 
 
 

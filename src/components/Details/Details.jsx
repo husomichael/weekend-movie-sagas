@@ -1,10 +1,38 @@
 import {useHistory} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
+import {useState} from 'react';
 
 function Details(){
+
+    const details = useSelector(store => store.details);
+    
+    const title = [];
+    const description = [];
+
+    details.map(detail =>{
+        return(
+            title.push(detail.title)
+        );
+    });
+
+    details.map(detail =>{
+        return(
+            description.push(detail.description)
+        );
+    });
+
     return(
         <div>
-            <p>stuff goes here</p>
+            <div>{title[0]}</div>
+            <br />
+            <div>{description[0]}</div>
+            <br />
+            <p>Genres:</p>
+            {details.map(detail => {
+                return <div>
+                    {detail.name}
+                    </div>
+            })}
         </div>
     );
 };

@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool')
 
+let movieResponse = [];
+
 router.get('/', (req, res) => {
 
   const query = `SELECT * FROM movies ORDER BY "title" ASC`;
@@ -18,30 +20,51 @@ router.get('/', (req, res) => {
 
 //Get single movie details
 router.get('/:id', (req, res) => {
-  const movieID = req.body.params;
-  const queryText = `
-    SELECT "description"
-    FROM "movies"
-    WHERE "id"=${movieID}
-  `
-  pool.query(queryText)
-    .then( dbRes =>{
-      const response = []
-      response.push(dbRes.rows);
-      const getGenresQuery = `
-      SELECT "name" FROM "movies_genres"
-      JOIN "genres"
-      ON "genres"."id"="movies_genres"."genre_id"
-      WHERE "movies_genres"."movie_id"=${movieID};
-      `
-    }).then(dbRes2 =>{
-      response.push(dbRes2.rows);
-      res.send(response);
-    })
-    .catch(dbErr => {
-      console.log('description get dbErr:', dbErr);
-      res.sendStatus(500);
-    });
+  const movieID = req.params.id;
+  console.log('movieID is:', movieID);
+  const queryText= `
+    SELECT DISTINCT * FROM "movies_genres"
+    JOIN "movies"
+    ON "movies"."id"="movies_genres"."movie_id"
+    JOIN "genres"
+    ON "genres"."id"="movies_genres"."genre_id"
+    WHERE "movies_genres"."movie_id"=${movieID};
+    `;
+    pool.query(queryText)
+      .then(dbRes =>{
+        res.send(dbRes.rows);
+      })
+      .catch(dbErr => {
+        console.log('ERROR: get movie description:', dbErr);
+      });
+
+      //Weird scope issue. Not sure how to tackle. Maybe global variable.
+      //.rows not working.
+  // const queryText = `
+  //   SELECT "description"
+  //   FROM "movies"
+  //   WHERE "id"=${movieID};
+  //   `;
+  // pool.query(queryText)
+  //   .then( dbRes =>{
+  //     // movieResponse.push(dbRes.rows);
+  //     const getGenresQuery = `
+  //     SELECT "name" FROM "movies_genres"
+  //     JOIN "genres"
+  //     ON "genres"."id"="movies_genres"."genre_id"
+  //     WHERE "movies_genres"."movie_id"=${movieID};
+  //     `;
+  //     pool.query(getGenresQuery)
+  //   }).then(dbRes2 =>{
+  //     // movieResponse.push(dbRes2.rows);
+  //     res.send(movieResponse);
+  //     movieResponse = [];
+  //   })
+  //   .catch(dbErr => {
+  //     console.log('description get dbErr:', dbErr);
+  //     res.sendStatus(500);
+  //   });
+
 });
 
 router.post('/', (req, res) => {
