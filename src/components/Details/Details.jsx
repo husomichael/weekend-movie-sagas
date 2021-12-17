@@ -8,6 +8,7 @@ function Details(){
     const history = useHistory();
     const title = [];
     const description = [];
+    const poster = [];
 
     details.map(detail =>{
         return(
@@ -21,6 +22,12 @@ function Details(){
         );
     });
 
+    details.map(detail =>{
+        return(
+            poster.push(detail.poster)
+        );
+    });
+
     function goToList(){
         history.push('/');
     };
@@ -30,6 +37,8 @@ function Details(){
             <div>{title[0]}</div>
             <br />
             <div>{description[0]}</div>
+            <br />
+            <img src={poster[0]} />
             <br />
             <p>Genres:</p>
             {details.map(detail => {
